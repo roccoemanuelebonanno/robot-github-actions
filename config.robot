@@ -5,6 +5,6 @@ Library    SeleniumLibrary
 *** Variables ***
 #########  CONFIGURATION BROWSER  #########
 
-${BROWSER}	Chrome
+${BROWSER}	headlesschrome
 ${URL}		https://roccoemanuelebonanno.github.io/-test-github-actions/
 
