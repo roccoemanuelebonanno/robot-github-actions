@@ -34,4 +34,4 @@ jobs:
 
       - name: Upload reports
         uses: actions/upload-artifact@v2
-        path: ${{ github.workspace }}/results
+          path: ${{ github.workspace }}/results
