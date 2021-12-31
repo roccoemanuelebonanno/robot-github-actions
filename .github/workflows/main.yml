@@ -2,9 +2,9 @@ name: Robot Framework
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
-jobs:
+jobs: 
   test:
     runs-on: ubuntu-latest
     steps:
