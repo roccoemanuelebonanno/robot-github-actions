@@ -19,12 +19,13 @@ jobs:
         uses: roccoemanuelebonanno/robot-github-actions@main
         with:
           ref: refs/heads/release
-    steps: 
+
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - name: Set up Python 3.10
         with:
-          python-version: 3.10
+          python-version: '3.10' 
+      - run: python --version
 
       - name: Install dependencies
         run: |
