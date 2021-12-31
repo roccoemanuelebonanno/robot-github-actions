@@ -1,17 +1,9 @@
 *** Settings ***
-Resource  ./config.robot
+Library  SeleniumLibrary 
 
-Suite Setup  Set Log level  TRACE 
-Test Setup   Open Browser   ${URL}   ${BROWSER}
-Test Teardown  Close Browser
-
-*** Variables ***
 
 *** Test Cases ***
-Test - Simple Test
-    Wait Until Page Contains Element    xpath://a[@class="header-business__logo"]  10s
-    Wait Until Element Is Visible      xpath://a[@class="header-business__logo"]  10s  
-
-    Wait Until Page Contains Element    id:login-username  10s
-    Wait Until Element Is Visible       id:login-username  10s
-
+Test Browser
+    Open Browser   https://google.it   headlesschrome
+    Wait Until Page Contains Element  //img[@id="hplogo"]   10s 
+    Wait Unttil Element Is Visible    //img[@id="hplogo"]   10s 
