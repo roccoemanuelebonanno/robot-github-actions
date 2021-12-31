@@ -32,6 +32,9 @@ jobs:
       - name: Start robotframework test
         run: "robot --outputdir results --exclude Disabled ."
 
-      - name: Upload reports
-        uses: actions/upload-artifact@v2
-          path: ./results
+      - name: Upload test results
+          uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: results
+            path: ${{ github.workspace }}/results
