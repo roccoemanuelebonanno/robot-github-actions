@@ -11,7 +11,6 @@ on:
 jobs:
   test:
     name: Test
-    needs: deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -32,27 +31,10 @@ jobs:
 
       - name: Start robotframework test
         run: "robot --outputdir results --exclude Disabled ."
-  
+
       - name: Upload reports
         uses: actions/upload-artifact@v1
         if: always()
         with:
-            name: reports
-            
-            path: ${{ github.workspace }}/reports
-        
-        - name: Get Repository Name
-          run: |
-            export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
-            echo "::set-env name=REPOSITORY_NAME::$REPO"
-        
-        
-        - name: Send test report as comment to commit
-          uses: joonvena/robotframework-reporter-action@v0.1
-          if: ${{ github.event_name == 'push' }}
-          env:
-            GH_ACCESS_TOKEN: ${{ github.TOKEN }}
-            REPO_OWNER: ${{ github.REPOSITORY_OwNER }}
-            COMMIT_SHA: ${{ github.SHA }}
-            REPOSITORY: ${{ env.REPOSITORY_NAME }}
-            REPORT_PATH: ${{ github.workspace }}/reports
+          name: results
+          path: ${{ github.workspace }}/results
