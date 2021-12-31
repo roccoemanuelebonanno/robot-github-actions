@@ -33,8 +33,5 @@ jobs:
         run: "robot --outputdir results --exclude Disabled ."
 
       - name: Upload reports
-        uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: results
+        - uses: actions/upload-artifact@v2
           path: ${{ github.workspace }}/results
